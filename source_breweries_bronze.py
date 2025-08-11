@@ -23,7 +23,7 @@ if not os.path.exists(output_file_path):
 output_file = os.path.join(output_file_path, "breweries.json.gz")
 
 logging.basicConfig(
-    filename=f'./logs/source_breweries_raw_{start_time.strftime("%Y%m%d_%H%M%S")}',
+    filename=f'./logs/source_breweries_bronze_{start_time.strftime("%Y%m%d_%H%M%S")}',
     filemode='a',
     format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
