@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  jupyter:
+    container_name: PySpark 
+    image: jupyter/pyspark-notebook
+    ports:
+      - '8888:8888'
+    restart: always
+    volumes:
+      - ./scripts:/home/jovyan/work/scripts
+      - ./datalake:/home/jovyan/work/datalake

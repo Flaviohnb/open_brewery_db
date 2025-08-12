@@ -2,20 +2,21 @@ import requests
 import logging
 import math
 import time
-import datetime
 import json
 import os
 import gzip
+from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-start_time = datetime.datetime.now()
-_year = datetime.datetime.now().strftime("%Y")
-_month = datetime.datetime.now().strftime("%m")
-_day = datetime.datetime.now().strftime("%d")
+utc_minus_3 = timezone(timedelta(hours=-3))
+start_time = datetime.now(utc_minus_3)
+_year = datetime.now(utc_minus_3).strftime("%Y")
+_month = datetime.now(utc_minus_3).strftime("%m")
+_day = datetime.now(utc_minus_3).strftime("%d")
 
 base_url = 'https://api.openbrewerydb.org/v1/breweries'
 per_page = 200
-output_file_path = f'./datalake/bronze/breweries/{_year}/{_month}/{_day}/'
+output_file_path = f'../datalake/bronze/breweries/{_year}/{_month}/{_day}/'
 
 if not os.path.exists(output_file_path):
     os.makedirs(output_file_path)
@@ -23,7 +24,7 @@ if not os.path.exists(output_file_path):
 output_file = os.path.join(output_file_path, "breweries.json.gz")
 
 logging.basicConfig(
-    filename=f'./logs/source_breweries_bronze_{start_time.strftime("%Y%m%d_%H%M%S")}',
+    filename=f'../logs/source_breweries_bronze_{start_time.strftime("%Y%m%d_%H%M%S")}',
     filemode='a',
     format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
@@ -62,7 +63,7 @@ with ThreadPoolExecutor(max_workers=5) as executor:
                     for item in data_breweries:
                         f.write(json.dumps(item) + "\n")
 
-end_time = datetime.datetime.now()
+end_time = datetime.now(utc_minus_3)
 logger.info(f"End {os.path.basename(__file__)} | Time: {end_time}")
 
 total_time = end_time - start_time
