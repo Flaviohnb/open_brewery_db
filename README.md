@@ -2,7 +2,7 @@
 
 ### Required softwares
 
-Python and Docker is required for this project. Below are the instructions for installing Python and Docker on Mac, Windows, and Linux. This project was developed on Windows.
+Python and Docker are required for this project. Below are the instructions for installing Python and Docker on Mac, Windows, and Linux. This project was developed on Windows.
 
 - Docker:
     - Windows: https://docs.docker.com/desktop/install/windows-install/
