@@ -1,7 +1,7 @@
 from pendulum import datetime, duration
 from datetime import datetime
 from airflow import DAG
-from airflow.operators.bash import BashOperator 
+from airflow.operators.bash import BashOperator  # type: ignore
 
 default_args = {
     'owner': 'airflow',
