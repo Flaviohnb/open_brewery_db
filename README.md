@@ -1,12 +1,17 @@
 # Open Brewery DB 
 
-### 1 - Install docker
+### Required softwares
 
-Docker is required for this project. Below are the instructions for installing Docker on Mac, Windows, and Linux. This project was developed on Windows.
+Python and Docker is required for this project. Below are the instructions for installing Python and Docker on Mac, Windows, and Linux. This project was developed on Windows.
 
-- Windows: https://docs.docker.com/desktop/install/windows-install/
-- Mac: https://docs.docker.com/desktop/install/mac-install/
-- Linux: https://docs.docker.com/desktop/install/linux-install/
+- Docker:
+    - Windows: https://docs.docker.com/desktop/install/windows-install/
+    - Mac: https://docs.docker.com/desktop/install/mac-install/
+    - Linux: https://docs.docker.com/desktop/install/linux-install/
+
+- Python (3.12.1):
+    - https://realpython.com/installing-python/
+
 
 ## Usage Guide
 
