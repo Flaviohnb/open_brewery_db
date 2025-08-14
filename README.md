@@ -13,7 +13,7 @@ Python, Docker and Astro CLI are required for this project. This project was dev
     - https://realpython.com/installing-python/
 
 - Astro CLI:
-    - https://www.astronomer.io/docs/astro/cli/install-cli/;    
+    - https://www.astronomer.io/docs/astro/cli/install-cli/
 
 
 ## Usage Guide
