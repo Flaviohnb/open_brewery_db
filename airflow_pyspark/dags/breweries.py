@@ -33,7 +33,16 @@ def etl_breweries():
         application="include/scripts/bronzeToSilver_breweries.py",
         verbose=True
     )
+
+    silverToGold = SparkSubmitOperator(
+        task_id="silverToGold",
+        retries=1,
+        retry_delay=timedelta(minutes=5),
+        conn_id="my_spark_conn",
+        application="include/scripts/silverToGold_aggBrewery.py",
+        verbose=True
+    )
     
-    sourceToBronze >> testCase >> bronzeToSilver    
+    sourceToBronze >> testCase >> bronzeToSilver >> silverToGold
 
 etl_breweries()
