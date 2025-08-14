@@ -2,7 +2,7 @@
 
 ### Required softwares
 
-Python and Docker are required for this project. Below are the instructions for installing Python and Docker on Mac, Windows, and Linux. This project was developed on Windows.
+Python, Docker and Astro CLI are required for this project. This project was developed on Windows and based on this tutorial "[How to run PySpark with Apache Airflow: The new way](https://www.youtube.com/watch?v=L3VuPnBQBCM)". In addition to the services offered by this tutorial, we are running an image with *Jupyter Notebook* for developing some PySpark scripts.
 
 - Docker:
     - Windows: https://docs.docker.com/desktop/install/windows-install/
@@ -12,6 +12,9 @@ Python and Docker are required for this project. Below are the instructions for 
 - Python (3.12.1):
     - https://realpython.com/installing-python/
 
+- Astro CLI:
+    - https://www.astronomer.io/docs/astro/cli/install-cli/;    
+
 
 ## Usage Guide
 
@@ -19,21 +22,21 @@ Python and Docker are required for this project. Below are the instructions for 
 
 - `git clone https://github.com/Flaviohnb/open_brewery_db.git`
 
-### 2 - Install requirements
+### 2 - Deploy
 
-- `pip install -r requirements.txt`
+After the repository clone is done, only the command is needed:
 
-### 3 - Execute docker-compose
+- `astro dev start`
 
-To execute the "Spark" and "Airflow" services on Docker, you need to be in the docker_airflow_spark folder and follow the commands below. This process is based on the following article: [Steps to install Apache airflow using docker-compose](https://medium.com/@Shamimw/steps-to-install-apache-airflow-using-docker-compose-9d663ea2e740). Our docker-compose file includes the PySpark container, so it will be deployed with Airflow.
+If everything goes as planned, your Dockerfile and services in Docker-Compose will run. After that, you'll be able to access the interface.
 
-- `cd docker_airflow_spark/`
-- `echo -e "AIRFLOW_UID=$(id -u)" > .env`
-- `AIRFLOW_UID=50000`
-- `docker-compose up airflow-init`
-- `docker-compose up &`
+### 3 - Access UI
 
-### 4 - Access UI
-
-- PySpark with Jupyternotebook: http://localhost:8888/
-- Airflow: http://localhost:8080/
+- *PySpark with Jupyternotebook* 
+    1. Access: http://localhost:8888/;
+    2. Run the command `docker exec -it jupyternotebook_dev jupyter server list`, to get the token;
+    3. Copy the info after `/?token=` and fill (password or token) on Jupyter UI;
+    
+- *Airflow*
+    1. Access: http://localhost:8080/;
+    2. User: admin, Password: admin;
